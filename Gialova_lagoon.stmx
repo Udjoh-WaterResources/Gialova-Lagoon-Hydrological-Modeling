@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0" xmlns:isee="http://iseesystems.com/XMILE">
+	<header>
+		<smile version="1.0" namespace="std, isee"/>
+		<name>Gialova_lagoon</name>
+		<uuid>df225bd9-8b0b-4d72-9259-3db48cde1c86</uuid>
+		<vendor>isee systems, inc.</vendor>
+		<product version="4.4.1" isee:build_number="4072" isee:saved_by_v1="true" lang="en">Stella Architect</product>
+	</header>
+	<ai_information>
+		<status verified="true" mixed="false" trusted="true" tampered="false" uses="false" analyzed="false" log_truncated="false" timestamp="1795379386" algorithm="ed25519" keyurl="https://iseesystems.com/keys/stella01.txt" want_var_info="true" want_var_status="false" want_log="false" sampling="1" signature="gmdRK/oCoMJkNMf5eaJ56QAc5ZEilLDQt3tJxGbjmbHhCGaYhiWpEHxt+9O6SeWvsJaExwqKBpBP6mu1mSvECw=="/>
+	</ai_information>
+	<sim_specs isee:sim_duration="1.5" isee:run_prefix="Run" isee:simulation_delay="0.0306122" isee:restore_on_start="false" method="Euler" time_units="Years" isee:instantaneous_flows="false" isee:ignore_module_errors="false" isee:strict_units="true" isee:loop_scores="true" isee:loop_exhaustive_allowed="1000">
+		<start>2001</start>
+		<stop>2050</stop>
+		<dt>0.125</dt>
+	</sim_specs>
+	<isee:prefs saved_runs="5" keep="false" show_module_prefix="true" live_update_on_drag="true" show_restore_buttons="false" layer="model" isee:design="Deluxe Prev-Next Blue Green Pastel" isee:design_custom="false" interface_scale_ui="true" interface_max_page_width="10000" interface_max_page_height="10000" interface_min_page_width="0" interface_min_page_height="0" rifp="true">
+		<isee:tag_styles>
+			<isee:tag_style tag="Interface"/>
+			<isee:tag_style tag="Output"/>
+			<isee:tag_style tag="Parameter"/>
+			<isee:tag_style tag="Policy"/>
+		</isee:tag_styles>
+	</isee:prefs>
+	<isee:multiplayer_settings include_chat="true" allow_observers="false" advance_time_increment="1" max_advance_time_in_ms="0" model_stops_when_players_drop="false" observer_start_page="home_page" enabled="false"/>
+	<isee:time_formats default_format="Builtin">
+		<isee:time_format name="Builtin" type="adaptive"/>
+	</isee:time_formats>
+	<isee:number_format_extenders/>
+	<default_format/>
+	<model_units>
+		<unit name="Dimensionless">
+			<eqn>1</eqn>
+			<alias>dmnl</alias>
+			<alias>unitless</alias>
+			<alias>fraction</alias>
+		</unit>
+		<unit name="Cubic Meters">
+			<eqn>Meters^3</eqn>
+			<alias>cubic meter</alias>
+			<alias>cu m</alias>
+		</unit>
+		<unit name="Meters">
+			<eqn/>
+			<alias>m</alias>
+			<alias>meter</alias>
+		</unit>
+		<unit name="Square Meters">
+			<eqn>Meters^2</eqn>
+			<alias>sq m</alias>
+			<alias>square meter</alias>
+		</unit>
+		<unit name="Kilograms">
+			<eqn/>
+			<alias>kg</alias>
+			<alias>kilogram</alias>
+		</unit>
+		<unit name="Years">
+			<eqn/>
+			<alias>yr</alias>
+			<alias>year</alias>
+		</unit>
+	</model_units>
+	<model>
+		<variables>
+			<stock name="Lagoon Volume">
+				<eqn>1350000</eqn>
+				<inflow>Xerolagados_Catchment_Runoff</inflow>
+				<inflow>Precipitation_Direct</inflow>
+				<inflow>Tyflomitis_Groundwater</inflow>
+				<inflow>Sea_exchange</inflow>
+				<outflow>Evaporative_loss_via_Turc_PET</outflow>
+				<non_negative/>
+				<units>Cubic Meters</units>
+			</stock>
+			<flow name="Xerolagados Catchment Runoff">
+				<eqn>River_Reconnected*(precipitation/1000)*Catchment_Area*Runoff_Coefficient</eqn>
+				<non_negative/>
+				<units>Cubic Meters/Years</units>
+			</flow>
+			<flow name="Precipitation Direct">
+				<eqn>(precipitation/1000)*Lagoon_Area</eqn>
+				<non_negative/>
+				<units>Cubic Meters/Years</units>
+			</flow>
+			<flow name="Evaporative loss via Turc PET">
+				<eqn>PET*Lagoon_Area</eqn>
+				<non_negative/>
+				<units>Cubic Meters/Years</units>
+			</flow>
+			<aux name="Catchment Area">
+				<eqn>22000000</eqn>
+				<units>Square Meters</units>
+			</aux>
+			<aux name="Lagoon Area">
+				<eqn>2255000</eqn>
+				<units>Square Meters</units>
+			</aux>
+			<aux name="Runoff Coefficient">
+				<eqn>0.15</eqn>
+				<units>Dimensionless</units>
+			</aux>
+			<aux name="Salinity">
+				<eqn>Salt_Mass/Lagoon_Volume</eqn>
+				<units>PSU</units>
+			</aux>
+			<aux name="temperature">
+				<eqn>TIME</eqn>
+				<gf>
+					<yscale min="0" max="50"/>
+					<xpts>2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050</xpts>
+					<ypts>18.6,18.5,18.6,18.4,18,18,18.7,18.7,18.6,19.1,18.3,19.1,19,18.9,18.8,19.1,18.8,19.5,19.2,19.1,20.46,20.35,20.46,20.24,19.8,19.8,20.57,20.57,20.46,21.01,20.13,21.01,20.9,20.79,20.68,21.01,20.68,21.45,21.12,21.01,20.46,20.35,20.46,20.24,19.8,19.8,20.57,20.57,20.46,21.01</ypts>
+				</gf>
+				<units>Celsius</units>
+			</aux>
+			<aux name="precipitation">
+				<eqn>TIME</eqn>
+				<gf>
+					<yscale min="0" max="1400"/>
+					<xpts>2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050</xpts>
+					<ypts>731.1,883.9,824.5,548.6,852.9,537.3,496,448.6,972.7,601.4,646.2,636.3,789.1,711.3,737.7,643.3,878.6,915.2,992.3,618.3,657.99,795.51,742.05,493.74,767.61,483.57,446.4,403.74,875.43,541.26,581.58,572.67,710.19,640.17,663.93,578.97,790.74,823.68,893.07,556.47,657.99,795.51,742.05,493.74,767.61,483.57,446.4,403.74,875.43,541.26</ypts>
+				</gf>
+				<units>Millimeters per year</units>
+			</aux>
+			<aux name="PET">
+				<eqn>((300+25*temperature+0.05*temperature^3)/1000)</eqn>
+				<units>meters per year</units>
+			</aux>
+			<flow name="Sea exchange">
+				<eqn>IF (Lagoon_Depth &gt; 0.77) THEN 
+    -(Lagoon_Volume - (0.77 * 2255000)) / DT 
+ELSE IF (Lagoon_Depth &lt; 0.60) THEN 
+    ((0.60 * 2255000) - Lagoon_Volume) / DT 
+ELSE 
+    0</eqn>
+				<units>Cubic Meters/Years</units>
+			</flow>
+			<flow name="Tyflomitis Groundwater">
+				<eqn>500000*Historical_Mean_Precipitation</eqn>
+				<non_negative/>
+				<units>Cubic Meters/Years</units>
+			</flow>
+			<aux name="Historical Mean Precipitation">
+				<eqn>precipitation/723.27</eqn>
+				<units>Dimensionless</units>
+			</aux>
+			<aux name="Lagoon Depth">
+				<eqn>Lagoon_Volume/2255000</eqn>
+				<units>Meters</units>
+			</aux>
+			<aux name="Ag Withdrawal">
+				<eqn>(MAX(0, Xerolagados_Catchment_Runoff+Tyflomitis_Groundwater))</eqn>
+				<units>Cubic Meters per year</units>
+			</aux>
+			<stock name="Salt Mass">
+				<eqn>51300000</eqn>
+				<inflow>salt_inflow</inflow>
+				<outflow>Salt_outflow</outflow>
+				<non_negative/>
+				<units>kilogram</units>
+			</stock>
+			<flow name="salt inflow">
+				<eqn>(IF Sea_exchange &gt; 0 THEN Sea_exchange * 38 ELSE 0) +(1500000*38)</eqn>
+				<non_negative/>
+				<units>kilogram/Years</units>
+			</flow>
+			<flow name="Salt outflow">
+				<eqn>(IF Sea_exchange &lt; 0 THEN ABS(Sea_exchange)* Salinity ELSE 0)+(1500000*Salinity)</eqn>
+				<non_negative/>
+				<units>kilogram/Years</units>
+			</flow>
+			<aux name="River Reconnected">
+				<eqn>0.5</eqn>
+			</aux>
+		</variables>
+		<views>
+			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+				<text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:loop_indicator color="black" background="white" vertical_text_align="top" font_size="12pt"/>
+				<numeric_display color="white" background="white" font_size="12pt" border_width="thin" border_style="solid" isee:transparent="false" isee:show_divider="true" isee:show_bounding_box="true" label_side="left"/>
+				<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false" axis_title_font_style="normal" axis_title_font_weight="normal" axis_title_text_decoration="none" axis_title_text_align="center" axis_title_vertical_text_align="center" axis_title_font_color="black" axis_title_font_family="Arial" axis_title_font_size="12pt" axis_title_text_padding="2" axis_title_text_border_color="black" axis_title_text_border_width="thin" axis_title_text_border_style="none" axis_label_font_style="normal" axis_label_font_weight="normal" axis_label_text_decoration="none" axis_label_text_align="center" axis_label_vertical_text_align="center" axis_label_font_color="black" axis_label_font_family="Arial" axis_label_font_size="9pt" axis_label_text_padding="2" axis_label_text_border_color="black" axis_label_text_border_width="thin" axis_label_text_border_style="none">
+					<isee:series_styles>
+						<isee:series_style color="blue" thickness="1"/>
+						<isee:series_style color="red" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="fuchsia" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="#008F44" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF7F00" thickness="1"/>
+						<isee:series_style color="#7F00FF" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#0CA0FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="lime" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF007F" thickness="1"/>
+						<isee:series_style color="aqua" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#F586FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="black" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#C8C8C8" thickness="1"/>
+					</isee:series_styles>
+				</graph>
+				<table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" interval="1" report_balances="beginning" report_flows="instantaneous" header_font_style="normal" header_font_weight="normal" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="12pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+				<button color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595"/>
+				<isee:annotation color="black" background="#E0E0E0" font_size="12pt" border_width="thin" border_style="solid" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595" popup_corner_radius="0" popup_background_color="#FFFECF"/>
+				<slider color="#0075FF" background="#E0E0E0" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" vertical="false" isee:fancy_appearance="false" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:stacked_container color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="0" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:dual_slider color="#66CC66" background="silver" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" isee:show_hover_tip="when_deciding" input_expands="true" input_width="100"/>
+				<isee:sim_speed_slider color="black" background="white"/>
+				<isee:time_slider color="#E95F74" background="silver"/>
+				<isee:pie_input color="black" background="white" font_size="12pt" legend_position="bottom" isee:transparent="false"/>
+				<knob color="#66CC66" background="#E0E0E0" font_size="12pt" label_side="bottom" wrap_title="true"/>
+				<numeric_input color="black" background="#E0E0E0" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<isee:dropdown_input color="black" background="#E0E0E0" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<switch color="black" background="#E0E0E0" font_size="12pt" label_side="top" wrap_title="true" isee:appearance="switch" isee:on_color="green"/>
+				<options color="black" background="white" appearance="radio-buttons" arrangement="vertical"/>
+				<graphical_input color="black" background="#E0E0E0" font_size="12pt" isee:show_hover_tip="true"/>
+				<group_input color="black" background="#E0E0E0" font_size="12pt"/>
+				<lamp color="black" background="white" font_size="9pt"/>
+				<gauge color="black" background="white" font_size="9pt" needle_color="#F09F72" bar_color="#EEEEEE" bar_progress_color="black" appearance="radial" num_major_ticks="11" num_minor_ticks="1" show_numeric_value="true"/>
+				<isee:spatial_map color="black" background="white" font_size="12pt"/>
+				<isee:animation_object color="black" background="white" font_size="12pt"/>
+				<isee:navigation_widget color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" padding="6 8" border_color="#999999" border_width="thin" border_style="solid" item_spacing="6" appearance="tabs" corner_radius="4" selected_item_color="black" selected_item_background="white" item_background="#DDDDDD" transparent_bg="false"/>
+				<isee:shape color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid" opacity="1" transparent_background="true" corner_radius="1"/>
+				<isee:selector color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:iframe color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt" border_width="thin" border_style="solid"/>
+				<isee:financial_table color="black" background="#E0E0E0" text_align="right" font_size="12pt" hide_border="false" auto_fit="true" first_column_width="250" other_column_width="100" header_font_style="normal" header_font_weight="bold" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="14pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+			</style>
+			<view isee:show_pages="false" background="white" page_width="1123" page_height="793" isee:page_cols="2" isee:page_rows="2" isee:scroll_x="18.3333" zoom="120" isee:popup_graphs_are_comparative="true" isee:enable_non_negative_highlights="false" type="stock_flow">
+				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+					<stock color="blue" background="white" font_color="blue" font_size="9pt" label_side="top">
+						<shape type="rectangle" width="45" height="35"/>
+					</stock>
+					<flow color="blue" background="white" font_color="blue" font_size="9pt" label_side="bottom">
+						<shape type="circle" radius="18"/>
+					</flow>
+					<isee:placeholder color="#228B22" background="white" font_color="#228B22" font_size="9pt" label_side="bottom"/>
+					<module color="blue" background="white" font_color="blue" font_size="9pt" label_side="top">
+						<shape type="rectangle" width="55" height="45"/>
+					</module>
+					<aux color="blue" background="white" font_color="blue" font_size="9pt" label_side="bottom">
+						<shape type="circle" radius="18"/>
+					</aux>
+					<group color="red" background="white" font_color="red" font_size="9pt"/>
+					<connector color="#FF007F" background="white" font_color="#FF007F" font_size="9pt" isee:thickness="1"/>
+					<text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+					<isee:loop_indicator color="black" background="white" vertical_text_align="top" font_size="12pt"/>
+					<numeric_display color="white" background="white" font_size="12pt" border_width="thin" border_style="solid" isee:transparent="false" isee:show_divider="true" isee:show_bounding_box="true" label_side="left"/>
+					<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false" axis_title_font_style="normal" axis_title_font_weight="normal" axis_title_text_decoration="none" axis_title_text_align="center" axis_title_vertical_text_align="center" axis_title_font_color="black" axis_title_font_family="Arial" axis_title_font_size="12pt" axis_title_text_padding="2" axis_title_text_border_color="black" axis_title_text_border_width="thin" axis_title_text_border_style="none" axis_label_font_style="normal" axis_label_font_weight="normal" axis_label_text_decoration="none" axis_label_text_align="center" axis_label_vertical_text_align="center" axis_label_font_color="black" axis_label_font_family="Arial" axis_label_font_size="9pt" axis_label_text_padding="2" axis_label_text_border_color="black" axis_label_text_border_width="thin" axis_label_text_border_style="none">
+						<isee:series_styles>
+							<isee:series_style color="blue" thickness="1"/>
+							<isee:series_style color="red" thickness="1" pen_style="dot_dashed"/>
+							<isee:series_style color="fuchsia" thickness="1" pen_style="dotted"/>
+							<isee:series_style color="#008F44" thickness="1" pen_style="dashed"/>
+							<isee:series_style color="#FF7F00" thickness="1"/>
+							<isee:series_style color="#7F00FF" thickness="1" pen_style="dot_dashed"/>
+							<isee:series_style color="#0CA0FF" thickness="1" pen_style="dotted"/>
+							<isee:series_style color="lime" thickness="1" pen_style="dashed"/>
+							<isee:series_style color="#FF007F" thickness="1"/>
+							<isee:series_style color="aqua" thickness="1" pen_style="dot_dashed"/>
+							<isee:series_style color="#F586FF" thickness="1" pen_style="dotted"/>
+							<isee:series_style color="black" thickness="1" pen_style="dashed"/>
+							<isee:series_style color="#C8C8C8" thickness="1"/>
+						</isee:series_styles>
+					</graph>
+					<table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" interval="1" report_balances="beginning" report_flows="instantaneous" header_font_style="normal" header_font_weight="normal" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="12pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+				</style>
+				<stock x="493.278" y="161.444" width="155.667" height="212.333" name="Lagoon Volume"/>
+				<flow x="408.972" y="181.944" name="Xerolagados Catchment Runoff">
+					<pts>
+						<pt x="324.667" y="181.944"/>
+						<pt x="493.278" y="181.944"/>
+					</pts>
+				</flow>
+				<flow x="410.528" y="273.778" name="Precipitation Direct">
+					<pts>
+						<pt x="327.778" y="273.778"/>
+						<pt x="493.278" y="273.778"/>
+					</pts>
+				</flow>
+				<flow x="718.028" y="305.556" name="Evaporative loss via Turc PET">
+					<pts>
+						<pt x="648.944" y="305.556"/>
+						<pt x="811.111" y="305.556"/>
+					</pts>
+				</flow>
+				<aux x="388.778" y="83.2222" width="24.6667" height="24.6667" name="Catchment Area"/>
+				<aux x="257.944" y="300.778" width="26.3333" height="26.3333" name="Lagoon Area"/>
+				<aux x="294.889" y="89.8889" width="25.7778" height="25.7778" name="Runoff Coefficient"/>
+				<aux x="695.278" y="141.611" width="31.3333" height="31.3333" name="Salinity"/>
+				<connector uid="4" angle="275.199">
+					<from>Catchment_Area</from>
+					<to>Xerolagados_Catchment_Runoff</to>
+				</connector>
+				<connector uid="5" angle="321.963">
+					<from>Runoff_Coefficient</from>
+					<to>Xerolagados_Catchment_Runoff</to>
+				</connector>
+				<connector uid="7" angle="16.072">
+					<from>Lagoon_Area</from>
+					<to>Precipitation_Direct</to>
+				</connector>
+				<stacked_container uid="21" x="227" y="37" width="217.222" height="153.889" minimized="true">
+					<graph width="217.222" height="153.889" type="time_series" show_grid="false" isee:tick_type="none" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" isee:show_pie_borders="true" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="3" isee:fill_intensity="0.1" isee:allow_zero_axis="true" left_axis_multi_scale="false" left_axis_auto_scale="true" left_include_units="true" right_axis_multi_scale="false" right_axis_auto_scale="true" right_include_units="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="1" index="0" show_y_axis="true">
+							<entity name="Lagoon_Volume"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="22" x="135.889" y="34.2778" width="832.222" height="416.056" minimized="true">
+					<table width="832.222" height="416.056">
+						<item type="time"/>
+						<item>
+							<entity name="Lagoon_Volume"/>
+						</item>
+						<item>
+							<entity name="Xerolagados_Catchment_Runoff"/>
+						</item>
+						<item>
+							<entity name="Precipitation_Direct"/>
+						</item>
+						<item>
+							<entity name="Evaporative_loss_via_Turc_PET"/>
+						</item>
+						<item>
+							<entity name="Salinity"/>
+						</item>
+						<item>
+							<entity name="Sea_exchange"/>
+						</item>
+						<item>
+							<entity name="Ag_Withdrawal"/>
+						</item>
+						<item>
+							<entity name="Salt_Mass"/>
+						</item>
+						<item>
+							<entity name="salt_inflow"/>
+						</item>
+						<item>
+							<entity name="Salt_outflow"/>
+						</item>
+					</table>
+				</stacked_container>
+				<aux x="157.889" y="92.2222" name="temperature"/>
+				<aux x="210.556" y="255.778" name="precipitation"/>
+				<aux x="144.722" y="146.611" width="26.3333" height="26.3333" name="PET"/>
+				<connector uid="30" angle="5.15702">
+					<from>precipitation</from>
+					<to>Precipitation_Direct</to>
+				</connector>
+				<flow x="770.972" y="226.611" name="Sea exchange">
+					<pts>
+						<pt x="905" y="226.611"/>
+						<pt x="648.944" y="226.611"/>
+					</pts>
+				</flow>
+				<connector uid="33" angle="11.593">
+					<from>Lagoon_Volume</from>
+					<to>Sea_exchange</to>
+				</connector>
+				<flow x="410.25" y="350.556" name="Tyflomitis Groundwater">
+					<pts>
+						<pt x="327.222" y="350.556"/>
+						<pt x="493.278" y="350.556"/>
+					</pts>
+				</flow>
+				<connector uid="36" angle="20.4109">
+					<from>precipitation</from>
+					<to>Xerolagados_Catchment_Runoff</to>
+				</connector>
+				<aux x="240" y="382.778" name="Historical Mean Precipitation"/>
+				<aux x="951" y="196.056" width="30.7778" height="30.7778" name="Lagoon Depth"/>
+				<connector uid="37" angle="358.819">
+					<from>Lagoon_Volume</from>
+					<to>Lagoon_Depth</to>
+				</connector>
+				<connector uid="38" angle="138.385">
+					<from>Lagoon_Depth</from>
+					<to>Sea_exchange</to>
+				</connector>
+				<connector uid="41" angle="280.367">
+					<from>temperature</from>
+					<to>PET</to>
+				</connector>
+				<connector uid="42" angle="168.44">
+					<from>
+						<alias uid="47"/>
+					</from>
+					<to>Evaporative_loss_via_Turc_PET</to>
+				</connector>
+				<connector uid="43" angle="150.812">
+					<from>
+						<alias uid="44"/>
+					</from>
+					<to>Evaporative_loss_via_Turc_PET</to>
+				</connector>
+				<connector uid="45" angle="257.989">
+					<from>precipitation</from>
+					<to>Historical_Mean_Precipitation</to>
+				</connector>
+				<connector uid="46" angle="10.7173">
+					<from>Historical_Mean_Precipitation</from>
+					<to>Tyflomitis_Groundwater</to>
+				</connector>
+				<aux x="431.556" y="391.778" width="27.4444" height="27.4444" name="Ag Withdrawal"/>
+				<connector uid="48" angle="301.516">
+					<from>Tyflomitis_Groundwater</from>
+					<to>Ag_Withdrawal</to>
+				</connector>
+				<connector uid="50" angle="299.108">
+					<from>Xerolagados_Catchment_Runoff</from>
+					<to>Ag_Withdrawal</to>
+				</connector>
+				<stock x="629.722" y="29.7222" width="86.6667" height="75" name="Salt Mass"/>
+				<flow x="545.417" y="63.3333" name="salt inflow">
+					<pts>
+						<pt x="461.111" y="63.3333"/>
+						<pt x="629.722" y="63.3333"/>
+					</pts>
+				</flow>
+				<connector uid="51" angle="69.0865">
+					<from>
+						<alias uid="56"/>
+					</from>
+					<to>salt_inflow</to>
+				</connector>
+				<flow x="782.028" y="63.3333" name="Salt outflow">
+					<pts>
+						<pt x="716.389" y="63.3333"/>
+						<pt x="871.667" y="63.3333"/>
+					</pts>
+				</flow>
+				<connector uid="52" angle="83.211">
+					<from>Sea_exchange</from>
+					<to>Salt_outflow</to>
+				</connector>
+				<connector uid="53" angle="43.3123">
+					<from>Lagoon_Volume</from>
+					<to>Salinity</to>
+				</connector>
+				<connector uid="54" angle="286.294">
+					<from>Salt_Mass</from>
+					<to>Salinity</to>
+				</connector>
+				<connector uid="55" angle="52.8869">
+					<from>Salinity</from>
+					<to>Salt_outflow</to>
+				</connector>
+				<aux x="248.944" y="187.056" name="River Reconnected"/>
+				<connector uid="57" angle="12.2875">
+					<from>River_Reconnected</from>
+					<to>Xerolagados_Catchment_Runoff</to>
+				</connector>
+				<alias font_style="italic" uid="44" x="859.111" y="378.556" width="26.3333" height="26.3333">
+					<of>Lagoon_Area</of>
+				</alias>
+				<alias font_style="italic" uid="47" x="874.611" y="327.111" width="26.3333" height="26.3333">
+					<of>PET</of>
+				</alias>
+				<alias font_style="italic" uid="56" x="493.778" y="101.222" width="18" height="18">
+					<of>Sea_exchange</of>
+				</alias>
+			</view>
+		</views>
+	</model>
+</xmile>
+
